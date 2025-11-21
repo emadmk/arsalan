@@ -6,6 +6,9 @@ WORKDIR /app
 # Set Node.js memory limit to prevent OOM errors
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 
+# Install build dependencies for native modules (required for rollup on Alpine)
+RUN apk add --no-cache python3 make g++
+
 # Copy package files
 COPY package*.json ./
 
