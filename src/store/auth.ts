@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User } from '../types';
-import { supabase } from '../lib/supabase';
+import { authAPI } from '../lib/api';
 
 interface AuthState {
   user: User | null;
@@ -28,40 +28,17 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ loading: true, error: null });
 
-          // Sign up with Supabase Auth
-          const { data: authData, error: authError } = await supabase.auth.signUp({
+          const data = await authAPI.register({
             email,
             password,
+            full_name: fullName || '',
           });
 
-          if (authError) throw authError;
-          if (!authData.user) throw new Error('Registration failed');
-
-          // Create user profile
-          const { error: profileError } = await supabase
-            .from('users')
-            .insert({
-              id: authData.user.id,
-              email,
-              full_name: fullName,
-              role: 'customer',
-            });
-
-          if (profileError) throw profileError;
-
-          // Fetch the created user
-          const { data: userData, error: userError } = await supabase
-            .from('users')
-            .select('*')
-            .eq('id', authData.user.id)
-            .single();
-
-          if (userError) throw userError;
-
-          set({ user: userData, loading: false });
+          set({ user: data.user, loading: false });
         } catch (error: any) {
-          set({ error: error.message, loading: false });
-          throw error;
+          const errorMessage = error.response?.data?.error || error.message || 'Registration failed';
+          set({ error: errorMessage, loading: false });
+          throw new Error(errorMessage);
         }
       },
 
@@ -69,34 +46,20 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ loading: true, error: null });
 
-          const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-          });
+          const data = await authAPI.login({ email, password });
 
-          if (authError) throw authError;
-          if (!authData.user) throw new Error('Login failed');
-
-          // Fetch user profile
-          const { data: userData, error: userError } = await supabase
-            .from('users')
-            .select('*')
-            .eq('id', authData.user.id)
-            .single();
-
-          if (userError) throw userError;
-
-          set({ user: userData, loading: false });
+          set({ user: data.user, loading: false });
         } catch (error: any) {
-          set({ error: error.message, loading: false });
-          throw error;
+          const errorMessage = error.response?.data?.error || error.message || 'Login failed';
+          set({ error: errorMessage, loading: false });
+          throw new Error(errorMessage);
         }
       },
 
       signOut: async () => {
         try {
           set({ loading: true, error: null });
-          await supabase.auth.signOut();
+          authAPI.logout();
           set({ user: null, loading: false });
         } catch (error: any) {
           set({ error: error.message, loading: false });
@@ -108,23 +71,14 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ loading: true });
 
-          const { data: { session } } = await supabase.auth.getSession();
+          const user = authAPI.getCurrentUser();
 
-          if (!session?.user) {
+          if (!user) {
             set({ user: null, loading: false });
             return;
           }
 
-          // Fetch user profile
-          const { data: userData, error } = await supabase
-            .from('users')
-            .select('*')
-            .eq('id', session.user.id)
-            .single();
-
-          if (error) throw error;
-
-          set({ user: userData, loading: false });
+          set({ user, loading: false });
         } catch (error: any) {
           console.error('Auth check error:', error);
           set({ user: null, loading: false });
@@ -138,19 +92,13 @@ export const useAuthStore = create<AuthState>()(
 
           set({ loading: true, error: null });
 
-          const { data, error } = await supabase
-            .from('users')
-            .update(updates)
-            .eq('id', user.id)
-            .select()
-            .single();
+          const data = await authAPI.updateProfile(updates);
 
-          if (error) throw error;
-
-          set({ user: data, loading: false });
+          set({ user: data.user, loading: false });
         } catch (error: any) {
-          set({ error: error.message, loading: false });
-          throw error;
+          const errorMessage = error.response?.data?.error || error.message;
+          set({ error: errorMessage, loading: false });
+          throw new Error(errorMessage);
         }
       },
 

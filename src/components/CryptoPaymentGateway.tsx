@@ -26,7 +26,7 @@ import {
   SUPPORTED_CRYPTOS,
 } from '../utils/crypto';
 import type { CryptoSymbol } from '../types';
-import { supabase } from '../lib/supabase';
+import { paymentsAPI } from '../lib/api';
 import { useAuthStore } from '../store/auth';
 import { toast } from 'sonner';
 
@@ -95,30 +95,17 @@ export function CryptoPaymentGateway({
     try {
       setProcessing(true);
 
-      // Create transaction record
-      const { data: transaction, error } = await supabase
-        .from('transactions')
-        .insert({
-          order_id: orderId,
-          user_id: user.id,
-          transaction_hash: transactionHash,
-          crypto_currency: selectedCrypto,
-          crypto_amount: cryptoAmount,
-          usd_amount: amountUsd,
-          exchange_rate: exchangeRate,
-          wallet_to: walletAddress,
-          status: 'pending',
-        })
-        .select()
-        .single();
-
-      if (error) throw error;
+      // Create payment via NOWPayments
+      const payment = await paymentsAPI.createPayment({
+        order_id: orderId,
+        pay_currency: selectedCrypto.toLowerCase(),
+      });
 
       setPaymentStatus('waiting');
-      toast.success('Payment submitted! Waiting for confirmation...');
+      toast.success('Payment created! Please send the crypto to the provided address...');
 
-      if (onPaymentInitiated && transaction) {
-        onPaymentInitiated(transaction.id);
+      if (onPaymentInitiated && payment.payment_id) {
+        onPaymentInitiated(payment.payment_id);
       }
 
       // In a real app, you would:
