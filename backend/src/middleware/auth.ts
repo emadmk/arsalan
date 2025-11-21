@@ -24,16 +24,14 @@ export interface JWTPayload {
  * Generate JWT token
  */
 export function generateToken(payload: JWTPayload, expiresIn: string = '7d'): string {
-  const options: SignOptions = { expiresIn };
-  return jwt.sign(payload, JWT_SECRET, options);
+  return jwt.sign(payload, JWT_SECRET, { expiresIn } as SignOptions);
 }
 
 /**
  * Generate refresh token (longer expiration)
  */
 export function generateRefreshToken(payload: JWTPayload): string {
-  const options: SignOptions = { expiresIn: '30d' };
-  return jwt.sign(payload, JWT_SECRET, options);
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '30d' } as SignOptions);
 }
 
 /**

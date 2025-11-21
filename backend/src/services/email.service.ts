@@ -24,7 +24,7 @@ export class EmailService {
    * Initialize email transporter
    */
   private initializeTransporter() {
-    this.transporter = nodemailer.createTransporter({
+    this.transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
       secure: SMTP_PORT === 465, // true for 465, false for other ports
