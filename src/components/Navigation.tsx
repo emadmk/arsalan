@@ -4,9 +4,24 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import logoImage from 'figma:asset/d3935e4ca5955af1343d8bcabb52536d2f9ae833.png';
+import { AuthDialog } from './AuthDialog';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+
+  const handleSignIn = () => {
+    setAuthMode('signin');
+    setAuthDialogOpen(true);
+    setIsOpen(false);
+  };
+
+  const handleGetStarted = () => {
+    setAuthMode('signup');
+    setAuthDialogOpen(true);
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-carpet-antique-gold/20">
@@ -31,12 +46,14 @@ export function Navigation() {
             <Button
               variant="ghost"
               className="text-carpet-cream hover:text-carpet-antique-gold"
+              onClick={handleSignIn}
             >
               Sign In
             </Button>
             <Button
               variant="outline"
               className="bg-transparent border-carpet-antique-gold text-carpet-antique-gold hover:bg-carpet-antique-gold hover:text-carpet-black transition-all duration-300"
+              onClick={handleGetStarted}
             >
               Get Started
             </Button>
@@ -62,14 +79,14 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 className="w-full text-carpet-cream hover:text-carpet-antique-gold"
-                onClick={() => setIsOpen(false)}
+                onClick={handleSignIn}
               >
                 Sign In
               </Button>
               <Button
                 variant="outline"
                 className="w-full bg-transparent border-carpet-antique-gold text-carpet-antique-gold hover:bg-carpet-antique-gold hover:text-carpet-black transition-all duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={handleGetStarted}
               >
                 Get Started
               </Button>
@@ -77,6 +94,13 @@ export function Navigation() {
           </div>
         )}
       </div>
+
+      {/* Auth Dialog */}
+      <AuthDialog
+        open={authDialogOpen}
+        onOpenChange={setAuthDialogOpen}
+        mode={authMode}
+      />
     </nav>
   );
 }
