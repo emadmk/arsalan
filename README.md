@@ -1,6 +1,6 @@
 # Persian Kerman Carpet - Professional E-Commerce Platform 🏛️
 
-A complete, production-ready e-commerce platform for selling luxury Persian Kerman Carpets with cryptocurrency payment integration.
+پلتفرم تجارت الکترونیک حرفه‌ای برای فروش فرش‌های دستباف کرمان با پرداخت کریپتو
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB)](https://reactjs.org/)
@@ -10,359 +10,413 @@ A complete, production-ready e-commerce platform for selling luxury Persian Kerm
 
 ## 🚀 ویژگی‌های کلیدی
 
-### 💳 درگاه پرداخت کریپتو مستقل
-- ✅ پشتیبانی از **10+ ارز دیجیتال** (BTC, ETH, USDT, USDC, BNB, SOL, ADA, MATIC, DOT, AVAX)
-- ✅ قیمت‌گذاری **Real-time** از طریق CoinGecko API
-- ✅ محاسبه خودکار نرخ تبدیل
-- ✅ ردیابی تراکنش‌های Blockchain
-- ✅ واریز مستقیم به Trust Wallet شما
+### 💳 درگاه پرداخت کریپتو مستقل (NOWPayments)
+- ✅ پشتیبانی از **140+ ارز دیجیتال** (BTC, ETH, USDT, USDC, BNB, SOL, ADA, و...)
+- ✅ بدون نیاز به KYC - کاملاً مستقل
+- ✅ کارمزد فقط 0.5%
+- ✅ واریز مستقیم به کیف پول شما
+- ✅ Webhook برای تایید خودکار پرداخت
+- ✅ ردیابی Real-time وضعیت تراکنش
 
 ### 🔐 سیستم احراز هویت کامل
+- ✅ JWT Authentication با Refresh Token
 - ✅ ثبت‌نام و ورود با ایمیل/پسورد
-- ✅ اتصال به Crypto Wallet (MetaMask, Trust Wallet, WalletConnect)
-- ✅ Protected routes برای صفحات خصوصی
+- ✅ رمزنگاری با bcrypt
 - ✅ نقش‌های کاربری (Admin/Customer)
-- ✅ Session management با Supabase Auth
+- ✅ محافظت در مقابل حملات (Rate Limiting, Helmet)
 
 ### 👨‍💼 پنل مدیریت جامع (Admin Dashboard)
-- ✅ مدیریت سفارشات با فیلتر و جستجو
-- ✅ مدیریت مشتریان و پروفایل‌ها
+- ✅ مدیریت کامل سفارشات با فیلتر و جستجو
+- ✅ آپدیت وضعیت سفارشات (pending → completed)
+- ✅ مدیریت محصولات (CRUD)
+- ✅ مدیریت کاربران
 - ✅ آمار و گزارشات فروش Real-time
 - ✅ ردیابی تراکنش‌های کریپتو
-- ✅ مدیریت محصولات و Grid Positions
-- ✅ نمودارها و Analytics
+- ✅ صدور گواهی اصالت (Certificate)
 
-### 👤 پنل کاربری حرفه‌ای (User Dashboard)
-- ✅ مشاهده و ردیابی سفارشات با Progress Bar
-- ✅ تاریخچه کامل پرداخت‌های کریپتو
-- ✅ مدیریت پروفایل و Wallet
-- ✅ دانلود گواهی اصالت (Certificate)
-- ✅ اطلاعات دقیق هر تراکنش
+### 👤 پنل کاربری (User Dashboard)
+- ✅ مشاهده و ردیابی سفارشات
+- ✅ تاریخچه کامل پرداخت‌ها
+- ✅ دانلود گواهی اصالت PDF
+- ✅ مدیریت پروفایل
+
+### 📧 سیستم ایمیل خودکار
+- ✅ تایید سفارش
+- ✅ تایید پرداخت
+- ✅ ارسال گواهی اصالت
+- ✅ آپدیت وضعیت سفارش
+- ✅ تمپلیت‌های HTML حرفه‌ای
+
+### 📄 گواهی اصالت دیجیتال
+- ✅ تولید خودکار PDF با QR Code
+- ✅ طراحی حرفه‌ای با حاشیه طلایی
+- ✅ شماره منحصر به فرد
+- ✅ قابل دانلود از پنل کاربری
 
 ### 🎨 رابط کاربری لوکس
 - ✅ طراحی Luxury و Responsive
-- ✅ Animations حرفه‌ای با Framer Motion
-- ✅ Dark/Light mode ready
+- ✅ Animations با Framer Motion
 - ✅ Mobile-first approach
-- ✅ Persian/Farsi RTL support ready
+- ✅ Tailwind CSS + shadcn/ui
 
 ## 🛠️ استک تکنولوژی
 
-### Frontend
-| تکنولوژی | نسخه | توضیحات |
-|----------|------|---------|
-| React | 18.3 | UI Library |
-| TypeScript | 5.3 | Type Safety |
-| Vite | 6.3 | Build Tool |
-| Tailwind CSS | 3.4 | Styling |
-| shadcn/ui | Latest | Component Library |
-| React Router | 6.21 | Routing |
-| TanStack Query | 5.17 | Data Fetching |
-| Zustand | 4.4 | State Management |
-| Framer Motion | Latest | Animations |
-
-### Backend & Database
+### Backend (کاملاً مستقل)
 | تکنولوژی | استفاده |
 |----------|---------|
-| Supabase | Backend as a Service |
-| PostgreSQL | Database |
-| Row Level Security | امنیت داده |
-| Real-time | Live Updates |
+| Node.js 18+ | Runtime |
+| Express 4.18 | Web Framework |
+| TypeScript 5.3 | Type Safety |
+| PostgreSQL 15 | Database |
+| JWT | Authentication |
+| bcrypt | Password Hashing |
+| NOWPayments API | Crypto Payments |
+| Nodemailer | Email Service |
+| PDFKit | Certificate Generation |
+| Docker | Containerization |
 
-### Web3 & Crypto
-| کتابخانه | استفاده |
+### Frontend
+| تکنولوژی | استفاده |
 |----------|---------|
-| Wagmi | React Hooks for Ethereum |
-| Viem | Ethereum Library |
-| Ethers.js | Blockchain Interactions |
-| CoinGecko API | Crypto Prices |
+| React 18.3 | UI Library |
+| TypeScript 5.3 | Type Safety |
+| Vite 6.3 | Build Tool |
+| Tailwind CSS 3.4 | Styling |
+| shadcn/ui | Component Library |
+| React Router 6.21 | Routing |
+| TanStack Query 5.17 | Data Fetching |
+| Zustand 4.4 | State Management |
+| Framer Motion | Animations |
 
 ## 📦 نصب و راه‌اندازی
 
-### پیش‌نیازها
-```bash
-Node.js >= 18.0.0
-npm >= 9.0.0
-```
+### روش 1: با Docker (توصیه می‌شود) 🐳
 
-### مراحل نصب
-
-#### 1. کلون پروژه
 ```bash
+# 1. کلون پروژه
 git clone https://github.com/emadmk/arsalan.git
 cd arsalan
+git checkout claude/crypto-dashboard-setup-01UtYRu8A2jBtj6bkhXztC1Q
+
+# 2. اجرای اسکریپت نصب
+chmod +x setup.sh
+./setup.sh
+
+# انتخاب گزینه 1 (Docker Compose)
 ```
 
-#### 2. نصب Dependencies
+اسکریپت به صورت خودکار:
+- فایل `.env` می‌سازد
+- PostgreSQL را راه‌اندازی می‌کند
+- Database schema را ایجاد می‌کند
+- Backend را build و اجرا می‌کند
+
+### روش 2: نصب دستی
+
 ```bash
-npm install
-```
+# 1. نصب PostgreSQL
+sudo apt install postgresql postgresql-contrib
 
-#### 3. تنظیم Environment Variables
+# 2. ساخت دیتابیس
+psql -U postgres -c "CREATE DATABASE persian_carpet_db;"
+psql -U postgres -d persian_carpet_db -f backend/src/config/schema.sql
 
-فایل `.env` بسازید:
-```bash
-cp .env.example .env
-```
+# 3. تنظیم Environment
+cp backend/.env.example backend/.env
+# ویرایش .env با API keys
 
-و این مقادیر را وارد کنید:
+# 4. نصب dependencies
+cd backend && npm install
+cd .. && npm install
 
-```env
-# Supabase Configuration
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+# 5. اجرای backend
+cd backend && npm run dev
 
-# Trust Wallet Address (آدرس کیف پول شما برای دریافت پرداخت)
-VITE_CRYPTO_WALLET_ADDRESS=0xYourWalletAddress
-
-# WalletConnect Project ID (اختیاری)
-VITE_WALLETCONNECT_PROJECT_ID=your-project-id
-```
-
-#### 4. راه‌اندازی Supabase Database
-
-1. در [supabase.com](https://supabase.com) پروژه جدید بسازید
-2. به SQL Editor بروید
-3. کد SQL زیر را از `src/lib/supabase.ts` کپی و اجرا کنید:
-
-```sql
--- دستورات SQL برای ایجاد جداول و RLS policies
--- کل Schema در فایل src/lib/supabase.ts موجود است
-```
-
-#### 5. اجرای پروژه
-```bash
+# 6. اجرای frontend (terminal دیگر)
 npm run dev
 ```
 
-🎉 پروژه در `http://localhost:5173` در دسترس است!
+## 🔑 تنظیمات API Keys
+
+### 1. NOWPayments (ضروری)
+
+1. به [nowpayments.io](https://nowpayments.io/) بروید
+2. ثبت‌نام کنید (بدون KYC)
+3. API Key و IPN Secret بگیرید
+4. در `.env` اضافه کنید:
+
+```env
+NOWPAYMENTS_API_KEY=your_api_key_here
+NOWPAYMENTS_IPN_SECRET=your_ipn_secret_here
+```
+
+### 2. Gmail SMTP (برای ایمیل)
+
+1. در Gmail خود 2FA فعال کنید
+2. App Password بسازید
+3. در `.env` اضافه کنید:
+
+```env
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+```
+
+### 3. JWT Secret (خودکار)
+
+اسکریپت setup.sh به صورت خودکار یک کلید امن می‌سازد.
 
 ## 📁 ساختار پروژه
 
 ```
 arsalan/
-├── src/
+├── backend/                    # Backend Node.js
+│   ├── src/
+│   │   ├── config/            # Database & env config
+│   │   │   ├── database.ts    # PostgreSQL connection
+│   │   │   └── schema.sql     # Database schema
+│   │   ├── models/            # Database models
+│   │   │   ├── User.ts
+│   │   │   ├── Order.ts
+│   │   │   ├── Product.ts
+│   │   │   ├── Transaction.ts
+│   │   │   ├── Certificate.ts
+│   │   │   └── Settings.ts
+│   │   ├── controllers/       # API controllers
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── orders.controller.ts
+│   │   │   ├── admin.controller.ts
+│   │   │   └── webhook.controller.ts
+│   │   ├── routes/            # API routes
+│   │   ├── middleware/        # Auth & validation
+│   │   ├── services/          # External services
+│   │   │   ├── nowpayments.service.ts
+│   │   │   ├── email.service.ts
+│   │   │   └── pdf.service.ts
+│   │   └── server.ts          # Express app
+│   ├── Dockerfile
+│   └── package.json
+├── src/                        # Frontend React
 │   ├── components/
-│   │   ├── ui/                          # shadcn/ui components
-│   │   ├── auth/
-│   │   │   ├── AuthModal.tsx           # مودال ورود/ثبت‌نام
-│   │   │   ├── LoginForm.tsx           # فرم ورود
-│   │   │   └── RegisterForm.tsx        # فرم ثبت‌نام
-│   │   ├── CryptoPaymentGateway.tsx    # درگاه پرداخت کریپتو
-│   │   ├── Navigation.tsx              # نوار ناوبری
-│   │   ├── HeroSection.tsx
-│   │   ├── PricingSection.tsx
-│   │   └── ... (سایر کامپوننت‌های لندینگ)
-│   │
 │   ├── pages/
-│   │   ├── HomePage.tsx                # صفحه اصلی لندینگ
-│   │   ├── admin/
-│   │   │   └── AdminDashboard.tsx      # داشبورد مدیریت
-│   │   └── user/
-│   │       └── UserDashboard.tsx       # داشبورد کاربر
-│   │
-│   ├── lib/
-│   │   ├── supabase.ts                 # Supabase client + DB Schema
-│   │   └── wagmi.ts                    # Web3 configuration
-│   │
-│   ├── store/
-│   │   └── auth.ts                     # Zustand auth store
-│   │
-│   ├── hooks/
-│   │   ├── useOrders.ts               # Hook سفارشات
-│   │   └── useCrypto.ts               # Hook قیمت‌های کریپتو
-│   │
-│   ├── utils/
-│   │   └── crypto.ts                   # توابع کریپتو
-│   │
-│   ├── types/
-│   │   └── index.ts                    # TypeScript definitions
-│   │
-│   └── App.tsx                          # Root component
-│
-├── .env.example                         # نمونه env
-├── package.json
-├── tailwind.config.js
-├── tsconfig.json
-├── vite.config.ts
+│   └── ...
+├── docker-compose.yml          # Docker setup
+├── setup.sh                    # اسکریپت نصب
 └── README.md
 ```
 
-## 🗄️ Schema دیتابیس
+## 🗄️ Database Schema
 
-### جداول اصلی:
+پایگاه داده شامل 6 جدول اصلی:
 
-**users** - اطلاعات کاربران
-```sql
-- id (UUID, PK)
-- email (TEXT, UNIQUE)
-- full_name (TEXT)
-- wallet_address (TEXT)
-- role ('admin' | 'customer')
-- created_at, updated_at
+### users
+- احراز هویت و اطلاعات کاربران
+- نقش‌های Admin/Customer
+- Password hashing با bcrypt
+
+### products
+- محصولات فرش
+- مدیریت Grid Positions
+- قیمت‌گذاری و تصاویر
+
+### orders
+- سفارشات کامل
+- 11 وضعیت مختلف (pending → completed)
+- اطلاعات مشتری و آدرس
+
+### transactions
+- تراکنش‌های کریپتو
+- اطلاعات NOWPayments
+- Transaction hash و مبالغ
+
+### certificates
+- گواهی‌های اصالت
+- شماره منحصر به فرد
+- لینک دانلود PDF
+
+### settings
+- تنظیمات سیستم
+- Key-value storage
+
+## 🔌 API Endpoints
+
+### Authentication
+```
+POST   /api/auth/register          # ثبت‌نام
+POST   /api/auth/login             # ورود
+POST   /api/auth/refresh           # تمدید توکن
+GET    /api/auth/me                # اطلاعات کاربر
+PATCH  /api/auth/me                # آپدیت پروفایل
+POST   /api/auth/change-password   # تغییر رمز
 ```
 
-**products** - محصولات (فرش‌ها)
-```sql
-- id (UUID, PK)
-- name (TEXT)
-- description (TEXT)
-- price_usd (DECIMAL)
-- images (JSONB[])
-- grid_positions_total (INT)
-- grid_positions_available (INT)
-- status ('active' | 'sold_out' | 'coming_soon')
+### Orders
+```
+POST   /api/orders                       # ایجاد سفارش
+POST   /api/orders/:id/payment           # پرداخت کریپتو
+GET    /api/orders/my                    # سفارشات من
+GET    /api/orders/:id                   # جزئیات سفارش
+GET    /api/orders/:id/payment-status    # وضعیت پرداخت
+GET    /api/orders/:id/certificate       # دانلود گواهی
 ```
 
-**orders** - سفارشات
-```sql
-- id (UUID, PK)
-- user_id (UUID, FK → users)
-- product_id (UUID, FK → products)
-- grid_position (INT)
-- status (pending_payment | payment_received | in_production | completed | cancelled)
-- payment_status (pending | completed | failed | refunded)
-- total_amount_usd (DECIMAL)
+### Admin
+```
+GET    /api/admin/dashboard              # آمار کلی
+GET    /api/admin/orders                 # لیست سفارشات
+PATCH  /api/admin/orders/:id/status      # آپدیت وضعیت
+POST   /api/admin/orders/:id/issue-certificate  # صدور گواهی
+GET    /api/admin/products               # لیست محصولات
+POST   /api/admin/products               # ایجاد محصول
+PATCH  /api/admin/products/:id           # ویرایش محصول
+DELETE /api/admin/products/:id           # حذف محصول
+GET    /api/admin/users                  # لیست کاربران
+GET    /api/admin/transactions           # لیست تراکنش‌ها
+GET    /api/admin/settings               # تنظیمات
 ```
 
-**transactions** - تراکنش‌های کریپتو
-```sql
-- id (UUID, PK)
-- order_id (UUID, FK → orders)
-- user_id (UUID, FK → users)
-- transaction_hash (TEXT)
-- crypto_currency (TEXT)
-- crypto_amount (DECIMAL)
-- usd_amount (DECIMAL)
-- exchange_rate (DECIMAL)
-- wallet_from, wallet_to (TEXT)
-- status (pending | confirmed | failed)
+### Webhook
+```
+POST   /api/webhooks/nowpayments         # NOWPayments IPN
 ```
 
-✅ همه جداول دارای **Row Level Security (RLS)** هستند
+## 🚀 دستورات مفید
 
-## 🔑 تنظیم API Keys
-
-### 1. Supabase Setup
-1. به [supabase.com](https://supabase.com) بروید
-2. پروژه جدید بسازید
-3. به Settings > API بروید
-4. مقادیر `URL` و `anon public key` را کپی کنید
-5. در `.env` قرار دهید
-
-### 2. Trust Wallet/Crypto Address
-آدرس کیف پول خود را که می‌خواهید پرداخت‌ها به آن واریز شود در `.env` قرار دهید:
-```env
-VITE_CRYPTO_WALLET_ADDRESS=0xYourTrustWalletAddress
-```
-
-### 3. WalletConnect (اختیاری)
-برای اتصال به Wallet:
-1. به [cloud.walletconnect.com](https://cloud.walletconnect.com) بروید
-2. پروژه جدید بسازید
-3. Project ID را کپی کنید
-
-### 4. CoinGecko (رایگان)
-برای دریافت قیمت‌های Real-time - نیازی به API key نیست! (رایگان)
-
-## 🚀 Build و Deployment
-
-### Build برای Production
+### Development
 ```bash
-npm run build
+# Backend
+cd backend
+npm run dev          # اجرا با hot reload
+npm run build        # Build TypeScript
+npm start            # اجرای production
+
+# Frontend
+npm run dev          # Development server
+npm run build        # Build برای production
 ```
 
-خروجی در پوشه `build/` قرار می‌گیرد.
-
-### Deploy روی Vercel
+### Docker
 ```bash
-npm i -g vercel
-vercel deploy
+docker-compose up -d              # اجرا
+docker-compose logs -f            # مشاهده logs
+docker-compose restart            # Restart
+docker-compose down               # متوقف کردن
 ```
 
-### Deploy روی Netlify
+### Database
 ```bash
-npm i -g netlify-cli
-netlify deploy --prod
+# اتصال به PostgreSQL
+docker-compose exec postgres psql -U postgres -d persian_carpet_db
+
+# Backup
+docker-compose exec postgres pg_dump -U postgres persian_carpet_db > backup.sql
+
+# Restore
+docker-compose exec -T postgres psql -U postgres -d persian_carpet_db < backup.sql
 ```
-
-### Deploy روی Railway/Render
-1. Repository را به Github push کنید
-2. در Railway/Render به repo وصل شوید
-3. Environment variables را تنظیم کنید
-4. Deploy!
-
-## 📝 راهنمای استفاده
-
-### برای کاربر:
-1. روی "Get Started" کلیک کنید
-2. ثبت‌نام کنید یا Wallet وصل کنید
-3. روی "Reserve Your Piece - $100" کلیک کنید
-4. ارز دیجیتال دلخواه را انتخاب کنید
-5. مقدار نمایش داده شده را به آدرس ارسال کنید
-6. Transaction Hash را وارد کنید
-7. در Dashboard خود سفارش را ردیابی کنید
-
-### برای ادمین:
-1. با حساب Admin وارد شوید
-2. در Navigation روی Dashboard کلیک کنید
-3. تمام سفارشات و تراکنش‌ها را مشاهده کنید
-4. وضعیت سفارشات را آپدیت کنید
 
 ## 🔐 امنیت
 
-✅ **Row Level Security (RLS)** برای تمام جداول
-✅ **JWT Authentication** توسط Supabase
-✅ **HTTPS Only** برای تمام requests
-✅ **Environment Variables** برای Secrets
-✅ **SQL Injection Prevention** با Parameterized Queries
-✅ **XSS Protection** با React DOM Sanitization
+✅ **JWT Authentication** با Refresh Token  
+✅ **Password Hashing** با bcrypt (10 rounds)  
+✅ **Rate Limiting** (100 req/15min API, 10 req/15min Auth)  
+✅ **Helmet Security Headers**  
+✅ **CORS Configuration**  
+✅ **Input Validation & Sanitization**  
+✅ **SQL Injection Prevention** (Parameterized Queries)  
+✅ **XSS Protection**  
+✅ **NOWPayments IPN Signature Verification**
 
-## 🎯 Roadmap آینده
+## 📊 فلوی پرداخت
 
-- [ ] پشتیبانی از Solana و سایر شبکه‌ها
-- [ ] NFT Certificate برای اصالت
-- [ ] Live Chat پشتیبانی
-- [ ] اپلیکیشن موبایل (React Native)
-- [ ] Multi-language (EN, FA, AR)
-- [ ] Smart Contract Escrow
-- [ ] سیستم امتیازدهی و نظرات
-- [ ] Email Notifications
-- [ ] SMS Verification
-- [ ] Progress Photos برای سفارشات
+1. کاربر سفارش ایجاد می‌کند
+2. سیستم پرداخت کریپتو ایجاد می‌کند (NOWPayments)
+3. کاربر مبلغ را به آدرس ارسال می‌کند
+4. NOWPayments webhook سیستم را مطلع می‌کند
+5. سیستم وضعیت سفارش را آپدیت می‌کند
+6. ایمیل تایید پرداخت ارسال می‌شود
+7. ادمین سفارش را completed می‌کند
+8. سیستم گواهی PDF تولید و ارسال می‌کند
 
-## 🤝 مشارکت
+## 🧪 تست API
 
-مشارکت‌ها خوشایند است!
+### با cURL:
 
-1. Fork کنید
-2. Feature branch بسازید (`git checkout -b feature/AmazingFeature`)
-3. تغییرات را commit کنید (`git commit -m 'Add AmazingFeature'`)
-4. Push کنید (`git push origin feature/AmazingFeature`)
-5. Pull Request باز کنید
+```bash
+# Health Check
+curl http://localhost:5000/health
 
-## 📄 لایسنس
+# ثبت‌نام
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"Test123!@#"}'
 
-MIT License - برای جزئیات بیشتر به LICENSE ببینید
+# لاگین
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"Test123!@#"}'
+
+# Dashboard (با توکن)
+curl http://localhost:5000/api/admin/dashboard \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### با Postman:
+
+1. Collection import کنید
+2. Environment variables تنظیم کنید
+3. تمام endpoints را تست کنید
+
+## 🐛 Troubleshooting
+
+### Database Connection Error
+```bash
+# چک کنید PostgreSQL در حال اجرا است
+docker-compose ps
+
+# Logs را ببینید
+docker-compose logs postgres
+```
+
+### Email Not Sending
+- Gmail 2FA فعال باشد
+- App Password (نه پسورد معمولی)
+- SMTP settings را چک کنید
+
+### Payment Webhook Not Working
+- NOWPayments IPN URL باید عمومی باشد
+- برای تست local از ngrok استفاده کنید:
+```bash
+ngrok http 5000
+# URL را در NOWPayments تنظیم کنید
+```
+
+### Port Already in Use
+```bash
+# پورت‌های در حال استفاده را ببینید
+sudo lsof -i :5000
+sudo lsof -i :5432
+
+# Process را kill کنید
+sudo kill -9 PID
+```
 
 ## 📞 پشتیبانی
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/emadmk/arsalan/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/emadmk/arsalan/discussions)
 - 📧 **Email**: support@example.com
 
-## ⭐ اگر مفید بود Star بدهید!
+## 📄 لایسنس
 
-اگر این پروژه برایتان مفید بود، لطفاً یک ستاره ⭐ بدهید!
+MIT License
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for Persian Heritage**
+**ساخته شده با ❤️ برای میراث فرهنگی ایران**
 
 🏛️ 🕌 🧵 ⚡
 
-[Original Figma Design](https://www.figma.com/design/qt04FLbV8v3s6EA7NChJju/Persian-Kerman-Carpet-Luxury-Landing-Page)
+[طراحی اولیه Figma](https://www.figma.com/design/qt04FLbV8v3s6EA7NChJju/Persian-Kerman-Carpet-Luxury-Landing-Page)
 
 </div>
