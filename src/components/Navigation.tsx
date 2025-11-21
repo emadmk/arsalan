@@ -27,12 +27,18 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Button 
-              variant="outline" 
+          <div className="hidden md:flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              className="text-carpet-cream hover:text-carpet-antique-gold"
+            >
+              Sign In
+            </Button>
+            <Button
+              variant="outline"
               className="bg-transparent border-carpet-antique-gold text-carpet-antique-gold hover:bg-carpet-antique-gold hover:text-carpet-black transition-all duration-300"
             >
-              View Collection
+              Get Started
             </Button>
           </div>
 
@@ -52,13 +58,20 @@ export function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-carpet-antique-gold/20 glass-dark">
-              <Button 
-                variant="outline" 
+            <div className="px-2 pt-2 pb-3 space-y-2 border-t border-carpet-antique-gold/20 glass-dark">
+              <Button
+                variant="ghost"
+                className="w-full text-carpet-cream hover:text-carpet-antique-gold"
+                onClick={() => setIsOpen(false)}
+              >
+                Sign In
+              </Button>
+              <Button
+                variant="outline"
                 className="w-full bg-transparent border-carpet-antique-gold text-carpet-antique-gold hover:bg-carpet-antique-gold hover:text-carpet-black transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
-                View Collection
+                Get Started
               </Button>
             </div>
           </div>
