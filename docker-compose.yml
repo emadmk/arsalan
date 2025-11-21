@@ -74,6 +74,20 @@ services:
       retries: 3
       start_period: 40s
 
+  # Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_URL: ${BACKEND_URL:-http://localhost:5000}
+    container_name: persian_carpet_frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:
     driver: local
