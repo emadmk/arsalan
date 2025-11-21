@@ -13,6 +13,7 @@ COPY package*.json ./
 # npm ci has issues with rollup's optional dependencies on Alpine Linux
 # Use --prefer-offline to reduce network overhead and memory usage
 RUN npm install --prefer-offline --no-audit --progress=false \
+    && npm rebuild rollup \
     && npm cache clean --force
 
 # Copy source code
