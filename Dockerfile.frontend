@@ -12,11 +12,12 @@ RUN apk add --no-cache python3 make g++
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with npm install to properly handle optional dependencies in Alpine
-# npm ci has issues with rollup's optional dependencies on Alpine Linux
-# Use --prefer-offline to reduce network overhead and memory usage
-RUN npm install --prefer-offline --no-audit --progress=false \
-    && npm rebuild rollup \
+# Remove package-lock.json if exists (let npm create a fresh one for Alpine)
+RUN rm -f package-lock.json
+
+# Install dependencies - let npm figure out the best packages for Alpine musl
+# This avoids the package-lock.json sync issues with optional dependencies
+RUN npm install --no-audit --progress=false \
     && npm cache clean --force
 
 # Copy source code
