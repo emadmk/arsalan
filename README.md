@@ -1,11 +1,12 @@
-# Persian Kerman Carpet - Crypto E-Commerce Platform 🏛️
+# Persian Kerman Carpet - Professional E-Commerce Platform 🏛️
 
-یک پلتفرم تجارت الکترونیک حرفه‌ای برای فروش فرش‌های دستباف کرمان با قابلیت پرداخت کریپتو
+A complete, production-ready e-commerce platform for selling luxury Persian Kerman Carpets with cryptocurrency payment integration.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.3-646CFF)](https://vitejs.dev/)
-[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E)](https://supabase.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18-lightgrey)](https://expressjs.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/)
 
 ## 🚀 ویژگی‌های کلیدی
 
