@@ -4,7 +4,11 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { motion } from 'motion/react';
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onReserveClick?: () => void;
+}
+
+export function HeroSection({ onReserveClick }: HeroSectionProps) {
   // Beautiful Custom SVG Icons for Social Proof
   const EyeIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,8 +118,9 @@ export function HeroSection() {
 
           {/* Single CTA Button */}
           <div className="space-y-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
+              onClick={onReserveClick}
               className="bg-carpet-antique-gold text-carpet-black hover:bg-carpet-bright-gold animate-glow px-12 lg:px-16 py-6 lg:py-8 h-auto text-lg lg:text-xl shadow-2xl border border-carpet-antique-gold/50 transition-all duration-300 hover:scale-105"
             >
               Reserve Your Piece - $100

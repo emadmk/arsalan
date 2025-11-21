@@ -4,7 +4,11 @@ import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { CheckCircle, Star } from 'lucide-react';
 
-export function PricingSection() {
+interface PricingSectionProps {
+  onReserveClick?: () => void;
+}
+
+export function PricingSection({ onReserveClick }: PricingSectionProps) {
   const benefits = [
     "50% savings vs regular price",
     "Priority grid position selection",
@@ -97,8 +101,9 @@ export function PricingSection() {
 
             {/* CTA Button */}
             <div className="text-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
+                onClick={onReserveClick}
                 className="bg-carpet-antique-gold text-carpet-black hover:bg-carpet-bright-gold px-12 py-6 h-auto text-xl animate-glow shadow-2xl border border-carpet-antique-gold/50"
               >
                 Reserve Now - $100
