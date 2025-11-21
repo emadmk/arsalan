@@ -2,7 +2,7 @@ import { http, createConfig } from 'wagmi';
 import { mainnet, polygon, bsc, arbitrum } from 'wagmi/chains';
 import { injected, walletConnect } from 'wagmi/connectors';
 
-const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '';
+const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'dummy-project-id-for-now';
 
 if (!projectId) {
   console.warn('WalletConnect Project ID not found. Please set VITE_WALLETCONNECT_PROJECT_ID in .env file.');
