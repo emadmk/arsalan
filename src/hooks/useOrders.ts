@@ -19,3 +19,19 @@ export function useOrders() {
     enabled: !!localStorage.getItem('token'),
   });
 }
+
+export function useAdminOrders() {
+  return useQuery<Order[]>({
+    queryKey: ['admin-orders'],
+    queryFn: async () => {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${API_URL}/api/admin/orders`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    },
+    enabled: !!localStorage.getItem('token'),
+  });
+}
