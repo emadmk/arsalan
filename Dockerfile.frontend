@@ -3,20 +3,26 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Set Node.js memory limit to prevent OOM errors
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
 # Copy package files
 COPY package*.json ./
 
 # Install dependencies with npm install to properly handle optional dependencies in Alpine
 # npm ci has issues with rollup's optional dependencies on Alpine Linux
-RUN npm install
+# Use --prefer-offline to reduce network overhead and memory usage
+RUN npm install --prefer-offline --no-audit --progress=false \
+    && npm cache clean --force
 
 # Copy source code
 COPY . .
 
-# Build the app
+# Build the app with memory-efficient settings
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
-RUN npm run build
+RUN npm run build \
+    && rm -rf node_modules/.cache
 
 # Production stage
 FROM nginx:alpine
