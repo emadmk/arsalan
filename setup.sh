@@ -22,7 +22,12 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null; then
+# Check for Docker Compose (V2 plugin or V1 standalone)
+if docker compose version &> /dev/null; then
+    DOCKER_COMPOSE_CMD="docker compose"
+elif command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE_CMD="docker-compose"
+else
     echo -e "${RED}❌ Docker Compose is not installed. Please install Docker Compose first.${NC}"
     exit 1
 fi
@@ -100,7 +105,7 @@ if [ "$choice" = "1" ]; then
     echo ""
 
     # Build and start containers
-    docker-compose up -d --build
+    $DOCKER_COMPOSE_CMD up -d --build
 
     echo ""
     echo -e "${GREEN}✅ Docker containers started successfully!${NC}"
@@ -109,10 +114,10 @@ if [ "$choice" = "1" ]; then
     sleep 10
 
     # Check health
-    if docker-compose ps | grep -q "healthy"; then
+    if $DOCKER_COMPOSE_CMD ps | grep -q "healthy"; then
         echo -e "${GREEN}✅ All services are healthy!${NC}"
     else
-        echo -e "${YELLOW}⚠️  Services are starting... Check logs with: docker-compose logs -f${NC}"
+        echo -e "${YELLOW}⚠️  Services are starting... Check logs with: $DOCKER_COMPOSE_CMD logs -f${NC}"
     fi
 
     echo ""
@@ -126,9 +131,9 @@ if [ "$choice" = "1" ]; then
     echo "  📊 API Health: http://localhost:5000/health"
     echo ""
     echo "Useful commands:"
-    echo "  View logs: docker-compose logs -f"
-    echo "  Stop: docker-compose down"
-    echo "  Restart: docker-compose restart"
+    echo "  View logs: $DOCKER_COMPOSE_CMD logs -f"
+    echo "  Stop: $DOCKER_COMPOSE_CMD down"
+    echo "  Restart: $DOCKER_COMPOSE_CMD restart"
     echo ""
 
 elif [ "$choice" = "2" ]; then
