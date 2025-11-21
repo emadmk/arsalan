@@ -350,7 +350,7 @@ export class OrderModel {
       [limit]
     );
 
-    return result.rows.map(row => ({
+    return result.rows.map((row: any) => ({
       ...row,
       transactions: row.transactions || [],
       certificate: row.certificate || undefined,

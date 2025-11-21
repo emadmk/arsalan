@@ -66,7 +66,7 @@ export class ProductModel {
 
     const result = await pool.query(query, params);
 
-    return result.rows.map(row => ({
+    return result.rows.map((row: any) => ({
       ...row,
       images: typeof row.images === 'string' ? JSON.parse(row.images) : row.images,
     }));

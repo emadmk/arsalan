@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { UserModel } from '../models';
 import { UserPublic, AuthenticationError, AuthorizationError } from '../types';
 
@@ -24,14 +24,16 @@ export interface JWTPayload {
  * Generate JWT token
  */
 export function generateToken(payload: JWTPayload, expiresIn: string = '7d'): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn });
+  const options: SignOptions = { expiresIn };
+  return jwt.sign(payload, JWT_SECRET, options);
 }
 
 /**
  * Generate refresh token (longer expiration)
  */
 export function generateRefreshToken(payload: JWTPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '30d' });
+  const options: SignOptions = { expiresIn: '30d' };
+  return jwt.sign(payload, JWT_SECRET, options);
 }
 
 /**

@@ -255,7 +255,7 @@ export class TransactionModel {
       ORDER BY total_usd DESC
     `);
 
-    return result.rows.map(row => ({
+    return result.rows.map((row: any) => ({
       pay_currency: row.pay_currency,
       count: parseInt(row.count),
       total_usd: parseFloat(row.total_usd),
